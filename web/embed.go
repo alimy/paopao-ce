@@ -10,10 +10,10 @@ import (
 )
 
 //go:embed dist/*
-var files embed.FS
+var Files embed.FS
 
 // NewFileSystem get an embed static assets http.FileSystem instance.
 func NewFileSystem() http.FileSystem {
-	subfs, _ := fs.Sub(files, "dist")
+	subfs, _ := fs.Sub(Files, "dist")
 	return http.FS(subfs)
 }

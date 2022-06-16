@@ -57,6 +57,9 @@ windows-x64:
 	@echo Build paopao-ce [windows-x64]
 	@CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -trimpath  -tags '$(TAGS)' -ldflags '$(LDFLAGS)' -o $(RELEASE_WINDOWS_AMD64)/$(TARGET).exe
 
+wails:
+	@cd web/src-wails && go mod download && wails build -tags embed -trimpath -clean -s && cd -
+
 clean:
 	@go clean
 	@find ./release -type f -exec rm -r {} +
